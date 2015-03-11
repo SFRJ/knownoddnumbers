@@ -10,13 +10,8 @@ import java.io.OutputStream;
 
 public class SystemB extends FakeSystemTemplate {
 
-    private InterestingGivens givens;
-    private CapturedInputAndOutputs captures;
-
-    public SystemB(int port, String context, InterestingGivens givens, CapturedInputAndOutputs captures) throws IOException {
-        super(port, context);
-        this.givens = givens;
-        this.captures = captures;
+    public SystemB(int port, String context, InterestingGivens interestingGivens, CapturedInputAndOutputs capturedInputAndOutputs) throws IOException {
+        super(port, context, interestingGivens, capturedInputAndOutputs);
     }
 
     @Override

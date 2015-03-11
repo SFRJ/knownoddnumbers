@@ -1,9 +1,6 @@
 package acceptancetests;
 
 import com.googlecode.yatspec.junit.SpecRunner;
-import com.googlecode.yatspec.state.givenwhenthen.ActionUnderTest;
-import com.googlecode.yatspec.state.givenwhenthen.GivensBuilder;
-import com.googlecode.yatspec.state.givenwhenthen.StateExtractor;
 import com.googlecode.yatspec.state.givenwhenthen.TestState;
 import externalsystems.SystemA;
 import externalsystems.SystemB;
@@ -14,6 +11,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import infrastructure.Application;
 
+import static acceptancetests.fixtures.GivensFixture.systemARepliesWithNumbers;
+import static acceptancetests.fixtures.GivensFixture.systemBRepliesWithNumbers;
+import static acceptancetests.fixtures.ThenFixture.systemCReceivedValue;
+import static acceptancetests.fixtures.ThenFixture.theApplicationReturnedValue;
+import static acceptancetests.fixtures.WhenFixture.aRequestIsSentToTheApplication;
 import static javax.ws.rs.client.ClientBuilder.newClient;
 import static org.hamcrest.core.Is.is;
 
@@ -30,7 +32,7 @@ public class KnownOddNumbersTest extends TestState {
     public void setUp() throws Exception {
         systemA = new SystemA(9996, "/", interestingGivens, capturedInputAndOutputs);
         systemB = new SystemB(9997, "/", interestingGivens, capturedInputAndOutputs);
-        systemC = new SystemC(9998, "/", capturedInputAndOutputs);
+        systemC = new SystemC(9998, "/", interestingGivens, capturedInputAndOutputs);
         application = new Application(9999, "/");
     }
 
@@ -49,34 +51,5 @@ public class KnownOddNumbersTest extends TestState {
         when(aRequestIsSentToTheApplication());
         then(theApplicationReturnedValue(), is("1,3,5"));
         then(systemCReceivedValue(),is("1,3,5"));
-    }
-
-    private GivensBuilder systemARepliesWithNumbers(String numbers) {
-        return givens -> {
-            givens.add("system A returns", numbers);
-            return givens;
-        };
-    }
-
-    private GivensBuilder systemBRepliesWithNumbers(String numbers) {
-        return givens -> {
-            givens.add("system B returns", numbers);
-            return givens;
-        };
-    }
-
-    private ActionUnderTest aRequestIsSentToTheApplication() {
-        return (givens, captures) -> {
-            captures.add("application response", newClient().target("http://localhost:9999/").request().get().readEntity(String.class));
-            return captures;
-        };
-    }
-
-    private StateExtractor<String> theApplicationReturnedValue() {
-        return captures -> captures.getType("application response", String.class);
-    }
-
-    private StateExtractor<String> systemCReceivedValue() {
-        return captures -> captures.getType("system C received value", String.class);
     }
 }

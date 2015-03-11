@@ -11,11 +11,8 @@ import java.util.Scanner;
 
 public class SystemC extends FakeSystemTemplate {
 
-    private CapturedInputAndOutputs captures;
-
-    public SystemC(int port, String context, CapturedInputAndOutputs captures) throws IOException {
-        super(port, context);
-        this.captures = captures;
+    public SystemC(int port, String context, InterestingGivens interestingGivens, CapturedInputAndOutputs capturedInputAndOutputs) throws IOException {
+        super(port, context, interestingGivens, capturedInputAndOutputs);
     }
 
     @Override
