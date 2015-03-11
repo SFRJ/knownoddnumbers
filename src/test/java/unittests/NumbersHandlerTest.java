@@ -2,10 +2,10 @@ package unittests;
 
 import com.sun.net.httpserver.HttpExchange;
 import org.junit.Test;
-import unittests.adapters.NumbersHandler;
-import unittests.ports.SystemA;
-import unittests.ports.SystemB;
-import unittests.ports.SystemC;
+import adapters.NumbersHandler;
+import ports.SystemA;
+import ports.SystemB;
+import ports.SystemC;
 
 import static org.mockito.Mockito.*;
 

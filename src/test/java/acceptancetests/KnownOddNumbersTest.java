@@ -12,7 +12,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import unittests.Application;
+import infrastructure.Application;
 
 import static javax.ws.rs.client.ClientBuilder.newClient;
 import static org.hamcrest.core.Is.is;

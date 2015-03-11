@@ -1,6 +1,6 @@
-package unittests.adapters;
+package adapters;
 
-import unittests.ports.SystemC;
+import ports.SystemC;
 
 import javax.ws.rs.client.Entity;
 

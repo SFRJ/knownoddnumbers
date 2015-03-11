@@ -1,6 +1,6 @@
-package unittests.adapters;
+package adapters;
 
-import unittests.ports.SystemA;
+import ports.SystemA;
 
 import javax.ws.rs.core.Response;
 

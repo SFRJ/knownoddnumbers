@@ -1,10 +1,10 @@
-package unittests.adapters;
+package adapters;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import unittests.ports.SystemA;
-import unittests.ports.SystemB;
-import unittests.ports.SystemC;
+import ports.SystemA;
+import ports.SystemB;
+import ports.SystemC;
 
 import java.io.IOException;
 import java.util.ArrayList;

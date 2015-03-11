@@ -1,10 +1,10 @@
-package unittests;
+package infrastructure;
 
 import com.sun.net.httpserver.HttpServer;
-import unittests.adapters.NumbersHandler;
-import unittests.adapters.SystemAAdapter;
-import unittests.adapters.SystemBAdapter;
-import unittests.adapters.SystemCAdapter;
+import adapters.NumbersHandler;
+import adapters.SystemAAdapter;
+import adapters.SystemBAdapter;
+import adapters.SystemCAdapter;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
